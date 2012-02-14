@@ -35,6 +35,22 @@ FLAGS = flags.FLAGS
 LOG = logging.getLogger('nova.virt.images')
 
 
+def virtual_size(image_path):
+    """
+    Get a virtual size of the image.
+    """
+    img_info = utils.execute('qemu-img', 'info', image_path, run_as_root=True)
+    lines = img_info[0].split('\n')
+    data = {}
+    for line in lines:
+        if not line:
+            continue
+        k, v = line.split(':')
+        data[k] = v.strip()
+    size = data['virtual size'].split('(')[1].split()[0]
+    return int(size)
+
+
 def fetch(context, image_href, path, _user_id, _project_id):
     # TODO(vish): Improve context handling and add owner and auth data
     #             when it is added to glance.  Right now there is no

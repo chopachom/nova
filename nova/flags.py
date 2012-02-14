@@ -423,3 +423,6 @@ DEFINE_list('monkey_patch_modules',
         'nova.compute.api:nova.notifier.api.notify_decorator'],
         'Module list representing monkey '
         'patched module and decorator')
+
+DEFINE_bool('disable_disk_local', False,
+            'Grow disk image instead of adding disk.local')
