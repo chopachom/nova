@@ -39,6 +39,8 @@ Cmnd_Alias NOVACMDS = /bin/aoe-stat,                            \
                       /usr/sbin/tgtadm,                         \
                       /usr/sbin/vblade-persist,                 \
                       /usr/bin/qemu-img,                        \
-                      /bin/cat
+                      /bin/cat,                                 \
+                      /sbin/e2fsck,                             \
+                      /sbin/resize2fs                           \
 
 nova ALL = (root) NOPASSWD: SETENV: NOVACMDS
